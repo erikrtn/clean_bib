@@ -19,7 +19,9 @@ def customizations(record):
     """
     record = type(record)
     record = page_double_hyphen(record)
-    record = convert_to_unicode(record)
+
+	# Comment out this line to prevent replacement of '{\&}' with '&'
+#    record = convert_to_unicode(record)
     ## delete the following keys.
     unwanted = ["doi", "url", "abstract", "file", "gobbledegook", "isbn", "link", "keyword", "mendeley-tags", "annote", "pmid", "chapter", "institution", "issn", "month"]
     for val in unwanted:
@@ -31,7 +33,7 @@ bib_database = None
 with open(input_b) as bibtex_file:
     parser = BibTexParser()
     parser.customization = customizations
-    parser.ignore_nonstandard_types = False
+    parser.ignore_nonstandard_types = True
     bib_database = bibtexparser.load(bibtex_file, parser=parser)
 
 if bib_database :
@@ -49,7 +51,7 @@ if bib_database:
     writer = BibTexWriter()
     writer.order_entries_by = ('author', 'year', 'type')
     bibtex_str = bibtexparser.dumps(bib_database, writer)
-    #print(str(bibtex_str))
+    print(str(bibtex_str))
     with open(output_b, "w") as text_file:
         print(bibtex_str, file=text_file)
 
