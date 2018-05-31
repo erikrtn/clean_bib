@@ -22,8 +22,9 @@ def customizations(record):
 
 	# Comment out this line to prevent replacement of '{\&}' with '&'
 #    record = convert_to_unicode(record)
-    ## delete the following keys.
-    unwanted = ["doi", "url", "abstract", "file", "gobbledegook", "isbn", "link", "keyword", "mendeley-tags", "annote", "pmid", "chapter", "institution", "issn", "month"]
+
+    # Delete the following keys
+    unwanted = ["doi", "url", "abstract", "file", "gobbledegook", "isbn", "link", "keyword", "mendeley-tags", "annote", "pmid", "chapter", "institution", "issn", "month", "primaryclass", "eprint", "arxivid"]
     for val in unwanted:
         record.pop(val, None)
     return record
@@ -51,7 +52,8 @@ if bib_database:
     writer = BibTexWriter()
     writer.order_entries_by = ('author', 'year', 'type')
     bibtex_str = bibtexparser.dumps(bib_database, writer)
-    print(str(bibtex_str))
+	# Print each entry to screen after cleaning
+    #print(str(bibtex_str))
     with open(output_b, "w") as text_file:
         print(bibtex_str, file=text_file)
 
