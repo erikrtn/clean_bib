@@ -8,7 +8,7 @@ input_b = "library.bib"
 output_b = "library_clean.bib"
 
 now = datetime.datetime.now()
-print("{0} Cleaning duff bib records from {1} into {2}".format(now, input_b, output_b))
+print("{0} Cleaning original bib file {1} and saving new file as {2}".format(now, input_b, output_b))
 
 # Let's define a function to customize our entries.
 # It takes a record and return this record.
