@@ -4,8 +4,8 @@ from bibtexparser.bparser import BibTexParser
 from bibtexparser.bwriter import BibTexWriter
 from bibtexparser.customization import *
 
-input_b = "references.bib"
-output_b = "references_clean.bib"
+input_b = "My Collection.bib"
+output_b = "references.bib"
 
 now = datetime.datetime.now()
 print("{0} Cleaning original bib file {1} and saving new file as {2}".format(now, input_b, output_b))
